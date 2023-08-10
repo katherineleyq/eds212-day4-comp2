@@ -2,6 +2,8 @@
 title: "eds212-day4-comp2"
 format: html
 editor: visual
+execute: 
+  warning: FALSE
 ---
 
 ```{r}
@@ -38,4 +40,31 @@ skim(penguins)
 
 ```{r}
 ggpairs(penguins)
+```
+
+## Making more exploratory charts in ggplot2
+
+Histogram
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(fill = "orange", 
+                 color = "purple") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(aes(fill = species)) +
+  theme_minimal()
+```
+
+## Box plot
+
+```{r}
+ggplot(data = penguins, aes(x = species, y = bill_length_mm))+
+  geom_boxplot(fill = "yellow") +
+  aes(color = island) +
+  theme_dark() +
+  geom_jitter(color = "magenta", aes(size = species), alpha = 0.5)
 ```
